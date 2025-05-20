@@ -1,0 +1,23 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/blog/Hero.astro";
+import Tags from "../../components/blog/Tags.astro";
+import ListPosts from "../../components/blog/ListPosts.astro";
+
+const pageTitle =
+  "Blog de Desarrollo y Tecnología | Felipe Reyes Sanchez | Ingeniero de Software";
+const description =
+  "Bienvenido a mi blog, donde comparto mi pasión por la programación, el desarrollo de software y mi experiencia en competencias tecnológicas.";
+const ogimage = {
+  url: "/images/perfil.webp",
+  alt: "Blog de Felipe Reyes Sanchez | Ingeniero de Software",
+};
+---
+
+<Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
+  <Hero />
+  <Tags />
+  <div class="px-8 max-sm:px-4">
+    <ListPosts />
+  </div>
+</Layout>

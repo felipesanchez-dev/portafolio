@@ -1,0 +1,218 @@
+---
+import Navigation from "./Navigation.astro";
+import ThemeIcon from "../ui/ThemeIcon.astro";
+import Social from "../ui/Social.astro";
+import { Icon } from "astro-icon/components";
+
+const currentPath = Astro.url.pathname;
+const mainRoutes = ["/", "/portfolio", "/about-me"];
+
+const githubUrl = "https://github.com/felipesanchez-dev";
+const linkedinUrl = "https://www.linkedin.com/in/felipereyessa";
+
+const isOnMainRoute = mainRoutes.includes(currentPath);
+
+type NavKey = "home" | "experience" | "projects" | "about" | "blog";
+
+const navItemKeys: NavKey[] = isOnMainRoute
+  ? ["home", "experience", "projects", "about", "blog"]
+  : ["home", "blog", "about"];
+
+const navLinkDetails: Record<NavKey, { href: string; label: string }> = {
+  home: { href: "/", label: "Inicio" },
+  experience: {
+    href: currentPath === "/" ? "#experience" : "/#experience",
+    label: "Experiencia",
+  },
+  projects: {
+    href: currentPath === "/" ? "#projects" : "/#projects",
+    label: "Proyectos",
+  },
+  about: { href: "/about-me", label: "Sobre Mí" },
+  blog: { href: "/blog", label: "Blog" },
+};
+
+const mobileNavLinks = navItemKeys
+  .map((key) => navLinkDetails[key])
+  .filter(Boolean);
+
+const headerHeight = "4rem";
+---
+
+<header
+  role="banner"
+  aria-label="Main navigation"
+  class="sticky top-0 z-50 w-full p-4 font-medium text-blacktext dark:text-zinc-300 dark:bg-[#0E0E11]/80 dark:border-b dark:border-zinc-800 bg-white/90 backdrop-blur-xs dark:backdrop-blur-xs max-md:px-0 transition-all"
+  style={`--header-height: ${headerHeight};`}
+>
+  <div
+    class="relative mx-auto flex max-w-7xl flex-row items-center justify-between max-xl:px-6"
+  >
+    <a href="/" aria-label="Go to home">
+      <h1
+        class="h-6 cursor-pointer text-2xl font-bold tracking-wider transition-all duration-300 hover:text-mint-300 [text-shadow:_0_1px_1px_#000]"
+      >
+        FELIPE
+      </h1>
+    </a>
+    <nav class="hidden md:flex items-center">
+      <Navigation items={navItemKeys} />
+    </nav>
+
+    <div class="flex items-center gap-x-3 md:gap-x-5">
+      <div
+        class="hidden md:flex items-center justify-center gap-x-5 text-xl"
+        role="list"
+      >
+        <Social link={githubUrl} iconName="github" />
+        <Social link={linkedinUrl} iconName="linkedin" />
+      </div>
+      <div class="flex items-center gap-x-3 text-xl">
+        <ThemeIcon />
+        <button
+          id="hamburger-button"
+          class="hamburger md:hidden rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-mint-300"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <Icon
+            name="bars"
+            class="hamburger-icon bars-icon block h-6 w-6"
+            aria-hidden="true"
+          />
+          <Icon
+            name="xmark"
+            class="hamburger-icon xmark-icon hidden h-6 w-6"
+            aria-hidden="true"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+  <nav
+    id="mobile-menu"
+    class="md:hidden absolute top-full left-0 right-0 z-40 bg-white/95 dark:bg-[#0E0E11]/95 backdrop-blur-md shadow-lg border-t border-zinc-200 dark:border-zinc-700
+           overflow-hidden transition-all duration-300 ease-in-out
+           opacity-0 pointer-events-none transform -translate-y-4 max-h-0"
+    aria-label="Mobile navigation"
+    aria-hidden="true"
+  >
+    <ul class="flex flex-col py-2">
+      {
+        mobileNavLinks.map((item) =>
+          item ? (
+            <li>
+              <a
+                href={item.href}
+                class="block w-full py-3 px-6 text-center text-lg text-blacktext dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors duration-150 ease-in-out"
+              >
+                {item.label}
+              </a>
+            </li>
+          ) : null,
+        )
+      }
+      <li
+        class="flex justify-center gap-x-6 py-4 mt-2 border-t border-zinc-200 dark:border-zinc-700"
+      >
+        <Social link={githubUrl} iconName="github" />
+        <Social link={linkedinUrl} iconName="linkedin" />
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburgerButton = document.getElementById("hamburger-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (!hamburgerButton || !mobileMenu) {
+      console.error("Hamburger button or mobile menu DOM element not found.");
+      return;
+    }
+
+    const barsIcon = hamburgerButton.querySelector(".bars-icon");
+    const xmarkIcon = hamburgerButton.querySelector(".xmark-icon");
+
+    if (!barsIcon || !xmarkIcon) {
+      console.error(
+        "Menu icons (bars or xmark) not found within hamburger button.",
+      );
+      return;
+    }
+
+    const initiallyExpanded =
+      hamburgerButton.getAttribute("aria-expanded") === "true";
+    if (initiallyExpanded) {
+      barsIcon.classList.add("hidden");
+      barsIcon.classList.remove("block");
+      xmarkIcon.classList.add("block");
+      xmarkIcon.classList.remove("hidden");
+    } else {
+      barsIcon.classList.add("block");
+      barsIcon.classList.remove("hidden");
+      xmarkIcon.classList.add("hidden");
+      xmarkIcon.classList.remove("block");
+    }
+
+    function toggleMenu() {
+      const isMenuOpen =
+        hamburgerButton.getAttribute("aria-expanded") === "true";
+
+      if (isMenuOpen) {
+        hamburgerButton.setAttribute("aria-expanded", "false");
+        mobileMenu.setAttribute("aria-hidden", "true");
+        mobileMenu.classList.add(
+          "opacity-0",
+          "pointer-events-none",
+          "-translate-y-4",
+          "max-h-0",
+        );
+        mobileMenu.classList.remove(
+          "opacity-100",
+          "pointer-events-auto",
+          "translate-y-0",
+          "max-h-[calc(100vh-var(--header-height,4rem))]",
+        );
+
+        barsIcon.classList.remove("hidden");
+        barsIcon.classList.add("block");
+        xmarkIcon.classList.remove("block");
+        xmarkIcon.classList.add("hidden");
+      } else {
+        hamburgerButton.setAttribute("aria-expanded", "true");
+        mobileMenu.setAttribute("aria-hidden", "false");
+        mobileMenu.classList.remove(
+          "opacity-0",
+          "pointer-events-none",
+          "-translate-y-4",
+          "max-h-0",
+        );
+        mobileMenu.classList.add(
+          "opacity-100",
+          "pointer-events-auto",
+          "translate-y-0",
+          "max-h-[calc(100vh-var(--header-height,4rem))]",
+        );
+
+        barsIcon.classList.remove("block");
+        barsIcon.classList.add("hidden");
+        xmarkIcon.classList.remove("hidden");
+        xmarkIcon.classList.add("block");
+      }
+    }
+
+    hamburgerButton.addEventListener("click", toggleMenu);
+
+    const mobileNavLinks = mobileMenu.querySelectorAll("a");
+    mobileNavLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (hamburgerButton.getAttribute("aria-expanded") === "true") {
+          toggleMenu();
+        }
+      });
+    });
+  });
+</script>

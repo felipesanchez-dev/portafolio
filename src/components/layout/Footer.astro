@@ -1,0 +1,77 @@
+---
+import Social from "../ui/Social.astro";
+import { Icon } from "astro-icon/components";
+
+const name = "Felipe Sanchez";
+const email = "mailto:felipe@felipesanchezdev.site";
+const github = "hhttps://github.com/felipesanchez-dev";
+const linkedin = "https://www.linkedin.com/in/felipereyessa";
+const instagram = "https://www.instagram.com/felipesanchez_dev";
+const youtube = "https://www.instagram.com/felipesanchez_dev";
+---
+
+<footer
+  class="relative bottom-0 w-full px-4 py-8 font-medium text-blacktext dark:bg-transparent dark:border-b-2 dark:border-zinc-800 dark:text-zinc-300 max-lg:mt-3"
+  role="contentinfo"
+  aria-label="Site footer">
+  <nav
+    class="mx-auto flex max-w-7xl flex-row items-center justify-between gap-4 text-xl max-xl:px-6 max-sm:flex-col"
+    aria-label="Footer navigation">
+    <div class="relative cursor-pointer">
+      <a
+        href="/"
+        aria-label="Return to homepage"
+        class="inline-block py-2 px-4 rounded-lg transition-all duration-300 ease-in-out hover:bg-gray-800/30 group">
+        {/* Efecto de brillo sutil en el borde o fondo al hacer hover */}
+        <div
+          class="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+          style="background: radial-gradient(circle at center, rgba(80,253,143,0.2) 0%, rgba(80,253,143,0) 70%); filter: blur(15px); z-index: -1;">
+        </div>
+        <h1
+          class="text-2xl font-bold tracking-wider transition-colors duration-300 [text-shadow:_0_1px_1px_#000]">
+          FELIPE SANCHEZ
+        </h1>
+      </a>
+    </div>
+    <div class="text-center">
+      <a
+        href="https://felipesanchezdev.site/"
+        class="flex items-center justify-center gap-3 text-base font-normal italic max-sm:text-sm"
+        aria-label="About the website development"
+        ><Icon name="code" aria-hidden="true" /><strong
+          >© 2025 Felipe Sánchez Dev. Todos los derechos reservados.</strong
+        ></a
+      >
+    </div>
+    <div
+      class="flex items-center justify-center gap-5"
+      role="list"
+      aria-label="Social media links">
+      <Social
+        link={email}
+        iconName="envelope"
+        label={`Send email to ${email}`}
+      />
+      <Social
+        link={instagram}
+        iconName="instagram"
+        label={`Visit ${name} on Instagram`}
+      />
+      <Social
+        link={youtube}
+        iconName="youtube"
+        label={`Visit ${name} on YouTube`}
+      />
+      <Social
+        link={github}
+        iconName="github"
+        label={`Visit ${name} on GitHub`}
+      />
+      <Social
+        link={linkedin}
+        iconName="linkedin"
+        label={`Visit ${name} on LinkedIn`}
+      />
+    </div>
+  </nav>
+</footer>

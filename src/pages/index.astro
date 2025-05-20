@@ -1,0 +1,72 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Experience from "../components/portfolio/Experience.astro";
+import HeroIndex from "../components/portfolio/HeroIndex.astro";
+import Contact from "../components/portfolio/Contact.astro";
+import ListProjects from "../components/portfolio/ListProjects.astro";
+import { Icon } from "astro-icon/components";
+import Heading from "../components/ui/Heading.astro";
+
+const pageTitle =
+  "Felipesanchezdev | Desarrollador Full Stack | Portafolio de Felipe Sánchez";
+const description =
+  "Portafolio de Felipe Sánchez, desarrollador de software apasionado por crear experiencias digitales modernas, funcionales y minimalistas. Descubre su trabajo, experiencia y proyectos destacados.";
+const ogimage = {
+  url: "/images/perfil.webp",
+  alt: "Felipe Sánchez",
+};
+---
+
+<Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
+  <HeroIndex />
+
+  <section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="experience">
+    <div class="flex flex-col pt-8 max-w-4xl mx-auto">
+      <div class="flex gap-4 items-center justify-center">
+        <Icon
+          class="text-3xl dark:text-white text-blacktext"
+          name="briefcase"
+        />
+        <Heading text="Experiencia" textGradient="Laboral" level={2} />
+      </div>
+      <Experience />
+    </div>
+  </section>
+
+  <section
+    class="bg-gradient-to-t dark:from-[#0e0e10] from-[#fff] from-50% to-transparent to-100% scroll-m-16"
+    id="projects">
+    <div class="flex flex-col gap-8 max-w-7xl mx-auto">
+      <ListProjects>
+        <div class="flex gap-4 items-center justify-center text-center">
+          <Icon class="text-3xl dark:text-white text-blacktext" name="code" />
+          <Heading text="Proyectos" textGradient="Realizados" level={2} />
+        </div>
+        <p
+          class="z-2 text-center mx-auto text-lg max-xl:text-base max-w-2xl dark:text-gray-200 text-blacktext my-6 leading-6 font-medium">
+          Hola, soy
+          <a
+            href="https://www.instagram.com/felipesanchez_dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-gradient-to-r from-riptide-500 to-mint-500 dark:from-riptide-300 dark:to-mint-200 text-transparent bg-clip-text font-bold hover:underline">
+            Juan Felipe Reyes Sánchez
+          </a>, desarrollador de software enfocado en construir soluciones que
+          combinan creatividad, funcionalidad y tecnología.
+          <br />
+          A continuación, te presento algunos de los <b
+            class="bg-gradient-to-r from-riptide-500 to-mint-500 dark:from-riptide-300 dark:to-mint-200 text-transparent bg-clip-text"
+            >proyectos</b
+          > en los que he trabajado, aplicando mis habilidades en diseño, programación
+          y resolución de problemas reales.
+          <br />
+          <b
+            class="bg-gradient-to-r from-riptide-500 to-mint-500 dark:from-riptide-300 dark:to-mint-200 text-transparent bg-clip-text"
+            >¡Explóralos y descubre cómo pienso en código!</b
+          >
+        </p>
+      </ListProjects>
+    </div>
+  </section>
+  <Contact />
+</Layout>

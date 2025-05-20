@@ -1,0 +1,63 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCE = [
+  {
+    date: "Agosto 2024 - Presente",
+    title: "Desarrollador de Software (Freelance)",
+    company: "Fundación San Dimas, Ibagué",
+    description:
+      "Responsable del desarrollo y mantenimiento integral del sitio web (fundacionsandimas.org), orientado a la protección del medio ambiente. He implementado mejoras SEO significativas y nuevas funcionalidades para optimizar la experiencia del usuario y la accesibilidad de la plataforma, aplicando mis conocimientos en desarrollo web moderno.",
+  },
+  {
+    date: "2023 - Presente",
+    title:
+      "Desarrollador Full Stack (Proyectos Propios y Plataforma Educativa)",
+    company: "Felipe Sánchez Dev (Iniciativa Personal)",
+    description:
+      "Diseño y desarrollo de diversas aplicaciones web y móviles como proyectos personales, utilizando tecnologías como React, Next.JS, Node.js y TypeScript. Actualmente, estoy enfocado en la creación de una plataforma educativa innovadora para mejorar la preparación académica de estudiantes, gestionando el ciclo completo de desarrollo del producto.",
+  },
+  {
+    date: "2023 - 2024",
+    title: "Tutor y Desarrollador en Comunidad Educativa",
+    company: "Club 'Cunista Enseña a Cunista' (CUN, Ibagué)",
+    description:
+      "Participé activamente impartiendo clases de refuerzo y tutorías personalizadas en JavaScript, desarrollo web y lógica de programación. Esta experiencia me permitió aplicar mis conocimientos en un entorno práctico, ayudar a compañeros y desarrollar proyectos pequeños para demostrar conceptos, además de fortalecer mis habilidades de comunicación y resolución de problemas.",
+  },
+
+  {
+    date: "2024",
+    title: "Campeón Nacional - Programathon CUN",
+    company: "Corporación Unificada Nacional de Educación Superior (CUN)",
+    description:
+      "Lideré y participé en el equipo ganador del Programathon a nivel departamental (Tolima) y nacional. Desarrollamos una solución innovadora bajo presión, aplicando algoritmia avanzada, pensamiento lógico y trabajo en equipo para resolver los desafíos planteados por la competencia.",
+  },
+  {
+    date: "2025",
+    title: "Desarrollador de Software",
+    company: "LuxoraDevs",
+    description:
+      "Como desarrollador de software en LuxoraDevs, participé activamente en la implementación de soluciones a la medida y en la programación de diversas aplicaciones.",
+  },
+];
+---
+
+<section
+  class="relative max-md:mt-0 mt-8"
+  aria-label="Experiencia Profesional y Práctica">
+  <ol class="relative mt-10">
+    {
+      EXPERIENCE.map((experience, index) => (
+        <li class="">
+          <article role="article" aria-labelledby={`experience-title-${index}`}>
+            <div
+              class="flex flex-col gap-2 text-zinc-00 dark:text-zinc-300 md:col-span-3"
+              aria-describedby={`experience-description-${index}`}>
+              <ExperienceItem {...experience} />
+            </div>
+          </article>
+        </li>
+      ))
+    }
+  </ol>
+</section>
