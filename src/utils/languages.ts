@@ -51,6 +51,16 @@ export const languages: Record<string, Language> = {
     className: "!bg-[#f6ece1]",
     iconName: "mysql",
   },
+  sql: {
+    name: "SQL",
+    className: "!bg-[#f6ece1]",
+    iconName: "mysql",
+  },
+  SqlLite: {
+    name: "SQL Lite",
+    className: "!bg-[#f6ece1]",
+    iconName: "mysql",
+  },
   wordpress: {
     name: "Wordpress",
     iconName: "wordpress",
@@ -128,13 +138,21 @@ export const languages: Record<string, Language> = {
     iconName: "cloudinary",
   },
   aws: {
-    name: "aws",
+    name: "Aws",
     iconName: "aws",
   },
   nextjs: {
     name: "Next.JS",
     iconName: "nextjs",
   },
+  Postman: {
+    name: "Postman",
+    iconName: "postman",
+  },
+  APIs: {
+    name: "APIs",
+    iconName: "Api",
+  }
 };
 
 export const getLanguage = (lang: string): Language => {
