@@ -14,6 +14,7 @@ const {
   githubText = "Echa un vistazo a mi repositorio",
   portfolioImage = "/images/portafolio.webp",
   email = "felipe@felipesanchezdev.site",
+  curriculum = "cv.pdf",
 } = Astro.props;
 ---
 
@@ -69,9 +70,7 @@ const {
           <span
             class="bg-gradient-to-r from-riptide-500 to-mint-500 bg-clip-text font-black text-transparent dark:from-riptide-300 dark:to-mint-200">
             React, Astro, Node.js, TypeScript y React Native.
-          </span> Uno de mis planes a corto plazo es compartir mi experiencia en
-          tecnología a través de redes sociales. Me considero una persona creativa,
-          adaptable y con gran capacidad para trabajar en equipo. 🚀💻
+          </span> 🚀💻
         </p>
 
         <div class="flex gap-4 max-sm:flex-col max-sm:items-center">
@@ -85,6 +84,11 @@ const {
             text="Sobre Mí"
             iconName="person"
             variant="dark"
+          />
+          <Button
+            link={curriculum}
+            text="Cv .PDF"
+            iconName="documento"
           />
         </div>
       </div>
@@ -167,8 +171,8 @@ const {
           Aquí puedes ver algunos de mis
           <span
             class="bg-gradient-to-r from-riptide-500 to-mint-500 bg-clip-text font-black text-transparent dark:from-riptide-300 dark:to-mint-200">
-            proyectos recientes
-          </span>, desde desarrollo web hasta apps móviles y exploraciones en
+            proyectos recientes,
+          </span>desde desarrollo web hasta apps móviles y exploraciones en
           código abierto.
           <br />
           <span

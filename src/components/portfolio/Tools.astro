@@ -1,48 +1,39 @@
 ---
-const allTools = [
-  // ── Front‑end ───────────────────────────
+const importantTools = [
+  // ── Fundamentales Web ───────────────────
   "html",
   "css",
-  "tailwind",
   "javascript",
   "ts",
-  "React", // React (web)
-  "react", // React Native
-  "astro",
-  "expo",
-  "nextjs",
 
-  // ── Back‑end / runtimes ────────────────
-  "node",
-  "Postman",
-  "APIs",
+  // ── Frameworks/Librerías Front‑end populares ───
+  "React",    
+  "nextjs",     
+
+  // ── Back‑end / Runtimes ────────────────
+  "node", 
 
   // ── Bases de datos ─────────────────────
-  "mongo",
-  "mysql",
-  "sql",
-  "SqlLite",
-  "firebase",
+  "sql",     
+  "mysql",     
+  "mongo",      
+  "firebase",  
 
-  // ── DevOps / despliegue ────────────────
-  "vercel",
+  // ── DevOps / Despliegue ────────────────
+  "aws",       
+  "vercel",     
   "cloudflare",
-  "cloudinary",
-  "aws",
 
-  // ── Utilidades / documentación ────────
-  "git",
-  "markdown",
+  "git",        
 ];
 
+// El resto de tu script permanece igual
 import Capsule from "../ui/Capsule.astro";
 
 type ToolVariant = "default" | "center";
 
-// Base classes common to all variants
-const baseClasses = "flex flex-wrap gap-4 max-lg:gap-1 grid-auto-efe";
+const baseClasses = "flex flex-wrap gap-4 max-lg:gap-1 grid-auto-efe"; // Nota: "grid-auto-efe" parece tener un typo, quizá quisiste decir "grid-auto-flow" o algo similar. Lo dejaré como está.
 
-// Variant‑specific classes
 const variantClasses: Record<ToolVariant, string> = {
   default: "cursor-default",
   center: "justify-center cursor-default",
@@ -50,13 +41,12 @@ const variantClasses: Record<ToolVariant, string> = {
 
 const { variant = "default", linkEnabled = false, size = "md" } = Astro.props;
 
-// Combine base with variant‑specific classes
 const classes = `${baseClasses} ${variantClasses[variant as ToolVariant]}`;
 ---
 
 <div class={classes}>
   {
-    allTools.map((tool) => (
+    importantTools.map((tool) => ( // Usamos la nueva lista "importantTools"
       <Capsule lang={tool} linkEnabled={linkEnabled} size={size} />
     ))
   }
