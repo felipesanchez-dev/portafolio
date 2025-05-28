@@ -2,14 +2,15 @@
 layout: /src/layouts/ProjectLayout.astro
 title: "Candy Crush (En desarrollo👷🏻‍♂️)"
 pubDate: 2025-05-28
-description: "Candy-Crush es una versión personalizada del clásico juego de rompecabezas en el que debes alinear caramelos del mismo tipo para ganar puntos."
+description: "Este es un proyecto de Candy Crush desarrollado en React Native, un clon del popular juego de puzzle donde los jugadores deben hacer coincidir dulces para obtener puntos."
 languages: ["react"]
 image:
   url: "/images/projects/candy-crush.webp"
   alt: "Interfaz de usuario de la app móvil de pronóstico del clima"
 ---
 
-**Candy Crush** es una aplicación desarrollada con **React Native** y **TypeScript**. Es una versión personalizada del clásico juego de rompecabezas en el que debes alinear caramelos del mismo tipo para ganar puntos. El objetivo es crear secuencias de al menos tres caramelos del mismo color para eliminarlos del tablero y sumar puntos.
+Este documento proporciona una visión general completa del repositorio de  **Candy Crush** desarrollador en  React Native, un juego de rompecabezas móvil match-3 construido con React Native 0.76.5. El juego implementa mecánicas clásicas de coincidencia de dulces con progresión de nivel, seguimiento de puntuación y sistemas de retroalimentación audiovisual.
+
 
 <div class="mt-5 mb-8 flex flex-wrap gap-4">
 
@@ -32,92 +33,154 @@ image:
   </div>
   
 </div>
-# Candy-Crush
 
-Bienvenido al repositorio **Candy-Crush**. Este proyecto es una implementación de un juego tipo Candy Crush desarrollado en TypeScript.
+## Arquitectura de Alto Nivel
+La aplicación sigue una arquitectura modular React Native con una clara separación entre la navegación, la lógica del juego, la gestión del estado y los componentes de UI.
+<a href="/images/arquitectura.png">
+<img src="/images/arquitectura.png" alt="Foto de la Programathon CUN | Felipe Reyes Sanchez" style="max-width: 100%; height: auto; border-radius: 10px; margin: 10px 0;" />
+</a>
 
-## Tabla de Contenidos
+## Características y Tecnologías Clave
 
-- [Descripción](#descripción)
-- [Demo](#demo)
-- [Características](#características)
-- [Instalación](#instalación)
-- [Uso](#uso)
-- [Tecnologías](#tecnologías)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Contribuciones](#contribuciones)
-- [Licencia](#licencia)
-- [Contacto](#contacto)
+# Características del Juego Principal
 
----
+## Características del Juego Principal
 
-## Descripción
+<style>
+  .tabla-modo th,
+  .tabla-modo td {
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd; /* para que se vea el borde */
+    padding: 8px;
+  }
+  .tabla-modo {
+    border-collapse: collapse;
+    width: 100%;
+  }
+</style>
 
-Candy-Crush es una versión personalizada del clásico juego de rompecabezas en el que debes alinear caramelos del mismo tipo para ganar puntos. El objetivo es crear secuencias de al menos tres caramelos del mismo color para eliminarlos del tablero y sumar puntos.
+<table class="tabla-modo">
+  <thead>
+    <tr>
+      <th>Característica</th>
+      <th>Implementación</th>
+      <th>Componentes Clave</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Nivel de Progresión</td>
+      <td>Gestión del estado de Zustand con persistencia MMKV</td>
+      <td><code>useLevelStore</code>, <code>gameLevels</code></td>
+    </tr>
+    <tr>
+      <td>Juego de Match-3</td>
+      <td>Coincidencia de azulejos a base de cuadrícula con gestos</td>
+      <td><code>GameTile</code>, <code>gridUtils</code></td>
+    </tr>
+    <tr>
+      <td>Sistema de Audio</td>
+      <td>Gestión sonora basada en contexto</td>
+      <td><code>SoundContext</code>, <code>SoundUtility</code></td>
+    </tr>
+    <tr>
+      <td>Animaciones</td>
+      <td>Lottie animaciones y Reanimado</td>
+      <td><code>LottieView</code>, <code>useAnimatedStyle</code></td>
+    </tr>
+    <tr>
+      <td>UI Responsive</td>
+      <td>Componentes escalables con retroalimentación de gestos</td>
+      <td><code>ScalePress</code>, <code>react-native-responsive-fontsize</code></td>
+    </tr>
+  </tbody>
+</table>
 
-## Demo
+## Tecnología Stack
+La aplicación se basa en React Native 0.76.5 con las siguientes dependencias clave:
 
-Si tienes una demo en línea, puedes enlazarla aquí:
+* Navegación: __@react-navigation/native__ para la gestión de pantalla
+* Gestión Estatal: __zustand__ para el estado global con react-native-mmkv persistencia
+* Animaciones: __react-native-reanimated__ y lottie-react-native
+* Audio: __react-native-sound-player__ para efectos de sonido
+* Gestos: __react-native-gesture-handler__ para interacciones táctiles
 
-[Ver Demo](#)  
+## Flujo de Aplicación y Navegación de Pantalla
 
-## Características
+El juego sigue un flujo de navegación lineal con persistencia de estado en todas las sesiones.
 
-- Interfaz intuitiva y visualmente atractiva.
-- Sistema de puntaje automático.
-- Tablero dinámico con animaciones.
-- Responsive (adaptable a diferentes tamaños de pantalla).
-- Código modular y fácil de entender.
-- Ideal para aprender sobre lógica de juegos y TypeScript.
+<a href="/images/flujo.png">
+<img src="/images/flujo.png" alt="Foto de la Programathon CUN | Felipe Reyes Sanchez" style="max-width: 100%; height: auto; border-radius: 10px; margin: 10px 0;" />
+</a>
 
-## Instalación
+## Lógica del Juego
 
-1. Clona este repositorio:
-   ```bash
-   git clone https://github.com/felipesanchez-dev/Candy-Crush.git
-   cd Candy-Crush
-   ```
-2. Instala las dependencias:
-   ```bash
-   npm install
-   # o
-   yarn install
-   ```
-3. Ejecuta el proyecto en modo desarrollo:
-   ```bash
-   npm start
-   # o
-   yarn start
-   ```
+El sistema __Game Logic__ implementa la mecánica de juego central y las reglas para el juego de estilo **Candy Crush**. Este sistema es responsable de administrar la cuadrícula del juego, manejar las interacciones de los mosaicos, implementar la detección de coincidencias, el cálculo de puntuación y hacer cumplir las reglas del juego. __Game Logic__ sirve como el controlador central para todas las mecánicas de juego que ocurren durante las sesiones de juego activas.
 
-## Uso
+### Integración de la Tienda de Nivel
 
-- Abre el proyecto en tu navegador (`http://localhost:3000` o el puerto configurado).
-- Interactúa con los caramelos haciendo clic y arrastrando para intercambiarlos.
-- Forma líneas de tres o más caramelos iguales para sumar puntos.
-- ¡Diviértete jugando y supera tu propio récord!
+El sistema Game Logic debe coordinarse con Level Store para el seguimiento del progreso y la gestión de la configuración del nivel.
+<style>
+  .tabla-modo th,
+  .tabla-modo td {
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  .tabla-modo {
+    border-collapse: collapse;
+    width: 100%;
+  }
+</style>
 
-## Tecnologías
+<table class="tabla-modo">
+  <thead>
+    <tr>
+      <th>Punto de Integración</th>
+      <th>Propósito</th>
+      <th>Estado de Implementación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Configuración de Nivel</td>
+      <td>Cargue reglas y objetivos específicos del nivel</td>
+      <td>Planificado</td>
+    </tr>
+    <tr>
+      <td>Seguimiento de Progreso</td>
+      <td>Actualizar el estado de finalización y los puntajes</td>
+      <td>Planificado</td>
+    </tr>
+    <tr>
+      <td>Gestión de Puntuación Alta</td>
+      <td>Rastrea y persiste las mejores puntuaciones</td>
+      <td>Planificado</td>
+    </tr>
+    <tr>
+      <td>Sistema de Logro</td>
+      <td>Desbloquea logros basados en el rendimiento</td>
+      <td>Planificado</td>
+    </tr>
+  </tbody>
+</table>
 
-- **Lenguaje Principal:** TypeScript
-- **Framework/Librerías:** (agrega aquí si usas React, Vue, etc.)
-- **Herramientas de desarrollo:** Node.js, npm/yarn
-- **Dependencias clave:** (enumera paquetes importantes si aplica)
+## Funcionalidades Implementadas
 
+### Sistema de Progresión
 
-## Contribuciones
+* 10 niveles únicos con diferentes configuraciones
+* Sistema de desbloqueo progresivo
+* Almacenamiento de puntuaciones máximas
+* Persistencia de progreso entre sesiones
 
-¡Las contribuciones son bienvenidas!  
-Si deseas colaborar, por favor sigue estos pasos:
-
-1. Haz un fork del repositorio.
-2. Crea una rama para tu funcionalidad o corrección (`git checkout -b feature/nueva-funcionalidad`).
-3. Realiza tus cambios y haz commit (`git commit -am 'Añadir nueva funcionalidad'`).
-4. Haz push a la rama (`git push origin feature/nueva-funcionalidad`).
-5. Abre un Pull Request.
-
-Por favor asegúrate de seguir las buenas prácticas de código y, si es posible, añade pruebas y documentación.
-
+### Interfaz de Usuario
+* Diseño responsivo adaptable a diferentes tamaños de pantalla
+* Animaciones fluidas con Reanimated
+* Sistema de navegación intuitivo
+* Feedback visual y auditivo
 
 
 ## 💬 Codigo fuente y soporte!
@@ -128,4 +191,3 @@ Por favor asegúrate de seguir las buenas prácticas de código y, si es posible
 🔗 **GitHub del Proyecto:** [[Codigo fuente](https://github.com/felipesanchez-dev/Candy-Crush)]
 
 ---
-¡Gracias por visitar y contribuir a Candy-Crush!
