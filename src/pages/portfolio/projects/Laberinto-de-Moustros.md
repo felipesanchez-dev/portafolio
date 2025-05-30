@@ -5,7 +5,7 @@ pubDate: 2025-05-19
 description: "Laberinto de Monstruos Un emocionante juego 2D de acción y aventura, desarrollado en Python con la popular librería PyGame."
 languages: ["python"]
 image:
-  url: "/images/projects/laberinto.webp"
+  url: "/images/projects/laberinto.jpg"
   alt: "Laberinto de Monstruos"
 ---
 

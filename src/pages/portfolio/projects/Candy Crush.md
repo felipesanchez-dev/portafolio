@@ -5,7 +5,7 @@ pubDate: 2025-05-28
 description: "Este es un proyecto de Candy Crush desarrollado en React Native, un clon del popular juego de puzzle donde los jugadores deben hacer coincidir dulces para obtener puntos."
 languages: ["react"]
 image:
-  url: "/images/projects/candy-crush.webp"
+  url: "/images/projects/candy-crush.png"
   alt: "Interfaz de usuario de la app móvil de pronóstico del clima"
 ---
 

@@ -6,7 +6,7 @@ pubDate: 2025-05-19
 description: "Huellitas en Casa es una Aplicación Web Progresiva (PWA) integral diseñada para refugios de animales y organizaciones de rescate como la Fundación CAPA"
 languages: ["React", "tailwind", "firebase", "ts", "cloudinary", "nextjs"]
 image:
-  url: "/images/projects/Huellitas.webp"
+  url: "/images/projects/huellitas.jpg"
   alt: "Laberinto de Monstruos"
   
 ---
