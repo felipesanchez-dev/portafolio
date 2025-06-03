@@ -14,15 +14,6 @@ Este documento proporciona una visión general completa del repositorio de  **Ca
 
 <div class="mt-5 mb-8 flex flex-wrap gap-4">
 
-<div class="w-fit h-fit from-transparentbg-conic/[from_var(--border-angle)] p-px hover:shadow-lg hover:shadow-mint-500/30 rounded-full animate-rotate-border">
-    <a style="text-decoration:none" href="#"
-       class="group cursor-pointer leading-none hover:scale-110 font-medium flex gap-2 transition-all ease-in-out justify-center items-center rounded-full disabled:opacity-50 disabled:cursor-not-allowed px-6 py-4 max-xl:px-5 max-sm:py-2 max-sm:px-3 text-lg max-xl:text-base max-sm:text-sm dark:bg-zinc-800 bg-zinc-800 no-underline decoration-none"
-       target="_blank" rel="noopener noreferrer" role="button" aria-label="Ver blog">
-      <svg class="size-7" fill="#ededed" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" stroke="#ededed"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M42,57H22A15,15,0,0,1,7,42V22A15,15,0,0,1,22,7H35A15,15,0,0,1,50,22v.5A2.5,2.5,0,0,0,52.5,25,4.5,4.5,0,0,1,57,29.5V42A15,15,0,0,1,42,57ZM22,9A13,13,0,0,0,9,22V42A13,13,0,0,0,22,55H42A13,13,0,0,0,55,42V29.5A2.5,2.5,0,0,0,52.5,27,4.5,4.5,0,0,1,48,22.5V22A13,13,0,0,0,35,9Z"></path><path d="M35.5,27h-11a4.5,4.5,0,0,1,0-9h11a4.5,4.5,0,0,1,0,9Zm-11-7a2.5,2.5,0,0,0,0,5h11a2.5,2.5,0,0,0,0-5Z"></path><path d="M41.5,45h-17a4.5,4.5,0,0,1,0-9h17a4.5,4.5,0,0,1,0,9Zm-17-7a2.5,2.5,0,0,0,0,5h17a2.5,2.5,0,0,0,0-5Z"></path></g></svg> 
-      <span class="decoration-none text-gray-200">Blog</span>
-    </a>
-  </div>
-
   <div class="w-fit h-fit from-transparentbg-conic/[from_var(--border-angle)] p-px hover:shadow-lg hover:shadow-mint-500/30 rounded-full animate-rotate-border">
     <a style="text-decoration:none" href="https://github.com/felipesanchez-dev/Candy-Crush/blob/main/apk/Candy%20Crush.apk?raw=true"
        class="group cursor-pointer leading-none hover:scale-110 font-medium flex gap-2 transition-all ease-in-out justify-center items-center rounded-full disabled:opacity-50 disabled:cursor-not-allowed px-6 py-4 max-xl:px-5 max-sm:py-2 max-sm:px-3 text-lg max-xl:text-base max-sm:text-sm dark:bg-zinc-800 bg-zinc-800 no-underline decoration-none"
