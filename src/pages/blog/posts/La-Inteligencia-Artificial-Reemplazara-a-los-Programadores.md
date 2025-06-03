@@ -14,7 +14,7 @@ tags:
     "Futuro del Trabajo",
     "Opiniones Personales",
   ]
-languages: ["Opinion", "Tech Analysis"]
+languages: ["Opinion"]
 ---
 
 <style>
