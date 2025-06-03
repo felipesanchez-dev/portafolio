@@ -5,6 +5,10 @@ export interface Language {
 }
 
 export const languages: Record<string, Language> = {
+  Opinion: {
+    name: "Opiniones",
+    iconName: "opinion",
+  },
   angular: {
     name: "Angular",
     iconName: "angular",
@@ -152,9 +156,9 @@ export const languages: Record<string, Language> = {
   APIs: {
     name: "APIs",
     iconName: "Api",
-  }
+  },
 };
 
 export const getLanguage = (lang: string): Language => {
   return languages[lang] || languages.html;
-}; 
+};
