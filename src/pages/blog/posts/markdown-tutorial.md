@@ -6,7 +6,7 @@ description: "Una guía completa sobre la sintaxis de Markdown, que cubre desde 
 image:
   url: "/images/posts/markdown.webp"
   alt: "Guía completa de Markdown por Felipe Reyes Sanchez"
-pubDate: 2025-05-19
+pubDate: 2025-06-08
 tags:
   [
     "documentación", "tutorial", "escritura", "diagramas", "mermaid"
