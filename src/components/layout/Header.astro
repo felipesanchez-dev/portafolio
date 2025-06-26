@@ -15,7 +15,7 @@ const isOnMainRoute = mainRoutes.includes(currentPath);
 type NavKey = "home" | "experience" | "projects" | "about" | "blog";
 
 const navItemKeys: NavKey[] = isOnMainRoute
-  ? ["home", "experience", "projects", "about", "blog"]
+  ? ["home", "projects", "experience", "about", "blog"]
   : ["home", "blog", "about"];
 
 const navLinkDetails: Record<NavKey, { href: string; label: string }> = {
