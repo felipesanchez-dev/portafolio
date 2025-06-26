@@ -1,0 +1,66 @@
+---
+import Project from "./Project.astro";
+const allPosts = await Astro.glob("../../pages/portfolio/projects/freelance/*.md");
+allPosts.sort(
+  (a, b) =>
+    new Date(b.frontmatter.pubDate).getTime() -
+    new Date(a.frontmatter.pubDate).getTime()
+);
+---
+
+<section class="relative pt-8 pb-32 max-2xl:px-8 max-md:pt-4">
+  <div class="mx-auto max-w-7xl py-8">
+    <slot />
+  </div>
+
+  <div
+    id="containerProjects2"
+    class="mx-auto max-w-7xl grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 gap-5 p-2 py-4 max-h-[150vh] overflow-hidden transition-[max-height] duration-500 ease-in-out">
+    {
+      allPosts.map((post) => (
+        <Project
+          url={post.url}
+          title={post.frontmatter.title}
+          description={post.frontmatter.description}
+          date={post.frontmatter.pubDate}
+          languages={post.frontmatter.languages}
+          image={post.frontmatter.image}
+        />
+      ))
+    }
+  </div>
+
+  <div
+    id="moreProjectsContainer2"
+    class="absolute bottom-0 left-0 w-full flex justify-center text-center bg-gradient-to-t from-[#FBFEFD] dark:from-[#0e0e10] from-55% to-transparent to-100% pb-30 pt-52">
+    <button
+      id="seeMoreProjectsButton2"
+      class="absolute font-bold cursor-pointer text-mint-400 dark:text-mint-100 hover:text-mint-500 dark:hover:text-mint-300 transition-all">
+      Ver todo
+    </button>
+  </div>
+</section>
+
+<script>
+  const seeMoreButton = document.querySelector("#seeMoreProjectsButton2");
+  const projectsContainer = document.querySelector(
+    "#containerProjects2"
+  ) as HTMLElement;
+  const moreProjectsWrapper = document.querySelector("#moreProjectsContainer2");
+
+  if (seeMoreButton && projectsContainer && moreProjectsWrapper) {
+    seeMoreButton.addEventListener("click", () => {
+      projectsContainer.style.maxHeight = projectsContainer.scrollHeight + "px";
+
+      setTimeout(() => {
+        if (moreProjectsWrapper) {
+          moreProjectsWrapper.classList.add("hidden");
+        }
+      }, 500);
+    });
+  } else {
+    console.error(
+      "Error: No se encontraron los elementos necesarios para el botón 'Ver más proyectos'. Revisa los IDs."
+    );
+  }
+</script>
